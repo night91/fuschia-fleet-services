@@ -1,0 +1,2 @@
+module RecruitingMailingHelper
+end

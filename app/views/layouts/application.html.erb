@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Myapp</title>
-    <%= csrf_meta_tags %>
+<head>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <title>Fuschia Fleet Service</title>
+  <%= stylesheet_link_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Fuschia Fleet</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Recruiting Mailing", recruit_mailing_add_path %></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="container master-container">
+  <%= yield %>
+</div>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<footer class="footer">
+  <div class="container">
+    <div class="pull-left span-3" style="text-align:left">
+      All <a href="/information/legal/">EVE related materials</a> are property of <a href="http://www.ccpgames.com">CCP Games</a><br>
+      <a href="/information/legal/">CCP Copyright Notice</a><br>
+    </div>
+  </div>
+</footer>
+<%= javascript_include_tag "application" %>
+</body>
 </html>

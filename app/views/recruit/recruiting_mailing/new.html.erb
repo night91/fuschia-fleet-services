@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6 mailing_list_panel">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Upload Mailing List</div>
+      <div class="panel-body">
+        <%= simple_form_for :mailing_list, url: recruit_mailing_add_path, as: 'mailing_list',
+                            wrapper: :inline_form,
+                            html: { class: 'form-inline' } do |f| %>
+
+          <%= f.input :file, as: :file %>
+
+          <%= f.button :submit, 'Save Mailing List' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

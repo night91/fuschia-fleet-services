@@ -1,0 +1,3 @@
+class RecruitingMailing < ApplicationRecord
+
+end
