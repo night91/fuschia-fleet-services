@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-6 panel_margin">
+    <%= render 'form' %>
+  </div>
+  <div class="col-md-6 panel_margin">
+    <div class="panel panel-primary">
+      <div class="panel-heading">New Mailing List</div>
+      <div class="panel-body">
+        <% @new_names_list.each do |name| %>
+          <div><span><%= name %></span></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
