@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'simple_form'
 gem 'rest-client'
 gem 'yarn'
+gem 'webpacker'
 
 gem 'bootstrap-sass', '~> 3.3.0'
 
