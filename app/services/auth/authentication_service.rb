@@ -73,7 +73,7 @@ module Auth
     end
 
     def encoded_authorization_header
-      encoded_auth = "#{@api_config['client_id']}:#{@api_config['secret_key']}"
+      encoded_auth = "#{@api_config['client_id']}:#{@api_config['secret_key'] || ENV['API_SECRET_KEY']}"
       encoded_auth = Base64.encode64(encoded_auth).delete("\n")
       "Basic #{encoded_auth}"
     end
