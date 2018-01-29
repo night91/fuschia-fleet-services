@@ -15,8 +15,26 @@
       </div>
       <ul class="nav navbar-nav">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Recruiting Mailing", recruit_mailing_add_path %></li>
+        <% if is_authenticated? %>
+          <li><%= link_to "Recruiting Mailing", recruit_mailing_add_path %></li>
+        <% end %>
       </ul>
+      <% unless is_authenticated? %>
+        <%= simple_form_for :cpp_login, url: auth_cpplogin_path do |f| %>
+          <%= f.button :submit, '', class: 'cpplogin-btn' %>
+        <% end %>
+      <% else %>
+        <div class="user-menu-container">
+          <div class="col-sm-8">
+            <span class="current-user-name"><%= current_user[:name] %></span>
+          </div>
+          <div class="col-sm-4">
+            <%= simple_form_for :logout, url: auth_logout_path do |f| %>
+              <%= f.button :submit, 'Logout', class: 'logout-btn' %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </header>

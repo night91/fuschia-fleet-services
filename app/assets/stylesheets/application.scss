@@ -12,6 +12,26 @@ body {
     margin: 0 auto;
 }
 
+.cpplogin-btn {
+    background-image: url("/assets/ssologin.png");
+    width: 270px;
+    height: 45px;
+    margin-top: 4px;
+    float: right;
+}
+
+.user-menu-container {
+    float: right;
+    margin-top: 8px;
+
+    span.current-user-name {
+        color: white;
+        display: block;
+        margin-top: 8px;
+        font-weight: bold;
+    }
+}
+
 .master-container {
     min-height: 450px;
 }

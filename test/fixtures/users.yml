@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  name: 
+  character_id: MyString
+  String: MyString
+  corporation_id: MyString
+  String: MyString
+  alliance_id: MyString
+  String: MyString
+  token: 
+
+two:
+  id: 
+  name: 
+  character_id: MyString
+  String: MyString
+  corporation_id: MyString
+  String: MyString
+  alliance_id: MyString
+  String: MyString
+  token: 

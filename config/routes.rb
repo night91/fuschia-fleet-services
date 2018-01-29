@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  namespace :auth do
+    post 'cpplogin', to: 'authentication#login'
+    post 'logout', to: 'authentication#logout'
+    get 'callback', to: 'authentication#callback'
+  end
+
   namespace :recruit do
     get 'mailing/add', to: 'recruiting_mailing#new'
     post 'mailing/add', to: 'recruiting_mailing#create'
