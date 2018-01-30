@@ -24,12 +24,13 @@ module Auth
       exchange_response = exchange_code(params[:code])
       verification_response = verify_token(exchange_response[:access_token])
 
-      response = {
-        refresh_token: exchange_response[:refresh_token],
-        character_id: verification_response[:CharacterID]
-      }
-
       process_user_login(verification_response[:CharacterID], exchange_response[:refresh_token])
+    end
+
+    def obtain_access_code(refresh_token)
+      endpoint = @api_config['auth_endpoint'] + '/oauth/token'
+      response = RestClient.post endpoint, obtain_access_code_params(refresh_token), { Authorization: encoded_authorization_header }
+      JSON.parse(response.body, {:symbolize_names => true})[:access_token]
     end
 
     private
@@ -40,9 +41,9 @@ module Auth
       JSON.parse(response.body, {:symbolize_names => true})
     end
 
-    def verify_token(token)
+    def verify_token(access_token)
       endpoint = @api_config['auth_endpoint'] + '/oauth/verify'
-      response = RestClient.get endpoint, { Authorization: authorization_header(token) }
+      response = RestClient.get endpoint, { Authorization: authorization_header(access_token) }
       JSON.parse(response.body, {:symbolize_names => true})
     end
 
@@ -65,6 +66,13 @@ module Auth
       {
         grant_type: 'authorization_code',
         code: code
+      }
+    end
+
+    def obtain_access_code_params(refresh_token)
+      {
+        grant_type: 'refresh_token',
+        refresh_token: refresh_token
       }
     end
 

@@ -1,12 +1,16 @@
 class EsiApiService
-  def initialize(token)
+  def initialize(access_token)
     @endpoint = APP_CONFIG['api']['endpoint']
     @datasourse = APP_CONFIG['api']['datasourse']
-    @token = token
+    @access_token = access_token
   end
 
   def character(character_id)
     get("#{@endpoint}/characters/#{character_id}/", false)
+  end
+
+  def character_roles(character_id)
+    get("#{@endpoint}/characters/#{character_id}/roles/")
   end
 
   def get(endpoint, auth = true)
@@ -26,7 +30,7 @@ class EsiApiService
   end
 
   def authorization_header(auth = true)
-    auth ? { Authorization: "Bearer #{@token}" } : {}
+    auth ? { Authorization: "Bearer #{@access_token}" } : {}
   end
 end
 

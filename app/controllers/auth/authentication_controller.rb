@@ -16,6 +16,7 @@ module Auth
 
     def callback
       user = @authentication_service.process_cpplogin_callback(login_callback_params)
+      user.update_roles
       create_session(user[:user_id])
       redirect_to root_path
     rescue ::Exceptions::InvalidCorporationLoginError
