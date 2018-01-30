@@ -15,7 +15,7 @@
       </div>
       <ul class="nav navbar-nav">
         <li><%= link_to "Home", root_path %></li>
-        <% if is_authenticated? %>
+        <% if is_authenticated? && policy(RecruitingMailing).new? %>
           <li><%= link_to "Recruiting Mailing", recruit_mailing_add_path %></li>
         <% end %>
       </ul>
@@ -38,6 +38,9 @@
     </div>
   </div>
 </header>
+
+<%= render 'shared/flash_messages' %>
+
 <div class="container master-container">
   <%= yield %>
 </div>

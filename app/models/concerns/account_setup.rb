@@ -7,7 +7,7 @@ module AccountSetup
   end
 
   def has_role?(role)
-    self.roles.exists(name: role)
+    self.roles.exists?(name: role)
   end
 
   def update_roles

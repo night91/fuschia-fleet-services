@@ -1,9 +1,11 @@
 module Recruit
   class RecruitingMailingController < ApplicationController
     def new
+      authorize RecruitingMailing
     end
 
     def create
+      authorize RecruitingMailing
       new_names = process_mailing_list_upload(mailing_list_params[:file])
       send_data(new_names, filename: 'recruiting_mail_list.txt')
     end
