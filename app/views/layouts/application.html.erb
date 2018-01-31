@@ -11,7 +11,12 @@
   <div class="navbar-inner">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Fuschia Fleet</a>
+        <a class="navbar-brand" href="#">
+          <div class="bear-drinking-container">
+            <%= image_tag('bear-drinking.png', alt: 'Bear Drinking') %>
+          </div>
+          Fuschia Fleet
+        </a>
       </div>
       <ul class="nav navbar-nav">
         <li><%= link_to "Home", root_path %></li>
@@ -30,7 +35,7 @@
           </div>
           <div class="col-sm-4">
             <%= simple_form_for :logout, url: auth_logout_path do |f| %>
-              <%= f.button :submit, 'Logout', class: 'logout-btn' %>
+              <%= f.button :submit, 'Logout', class: 'btn btn-info logout-btn' %>
             <% end %>
           </div>
         </div>

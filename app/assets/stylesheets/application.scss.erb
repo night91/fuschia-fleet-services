@@ -1,10 +1,12 @@
+@import "colors";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "recruiting_mailing";
 @import "welcome";
 
 body {
-    padding-top: 60px;
+    background-image: url('<%= asset_path("bg_cyborg_blueish.jpg") %> ');
+    background-attachment: fixed;
 }
 
 .col-centered{
@@ -13,11 +15,23 @@ body {
 }
 
 .cpplogin-btn {
+    border-radius: 5px;
+    border-color: $dark1;
     background-image: url('<%= asset_path("ssologin.png") %> ');
     width: 270px;
     height: 45px;
     margin-top: 4px;
     float: right;
+
+    &:hover {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url('<%= asset_path("ssologin.png") %> ');
+        border-color: $dark2;
+    }
+}
+
+.navbar {
+    background-color: $dark1;
+    color: $white1;
 }
 
 .user-menu-container {
@@ -25,7 +39,7 @@ body {
     margin-top: 8px;
 
     span.current-user-name {
-        color: white;
+        color: $white1;
         display: block;
         margin-top: 8px;
         font-weight: bold;
@@ -34,18 +48,29 @@ body {
 
 .master-container {
     min-height: 450px;
+    margin-top: 40px;
+}
+
+.bear-drinking-container {
+    float: left;
+    margin-top: -16px;
+    padding-right: 10px;
+}
+
+.bear-drinking-container img {
+    width: 50px;
+    height: 50px;
 }
 
 .footer {
     padding: 70px 0;
     margin-top: 70px;
     border-top: 1px solid #e5e5e5;
-    background-color: #f5f5f5;
 }
 
 .footer p {
     margin-bottom: 0;
-    color: #777;
+    color: $white1;
 }
 
 .footer-links {

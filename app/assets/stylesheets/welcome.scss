@@ -2,11 +2,18 @@
 // They will automatically be included in application.scss.erb.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.bear-drinking-container {
-  margin-top: 25px;
+.welcome-container {
+  color: $white1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
 }
 
-.bear-drinking-container img {
-  width: 70%;
-  height: 100%;
+.welcome-container {
+  h2 {
+
+  }
+  p {
+    margin-top: 27px;
+  }
 }

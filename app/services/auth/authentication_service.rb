@@ -29,7 +29,9 @@ module Auth
 
     def obtain_access_code(refresh_token)
       endpoint = @api_config['auth_endpoint'] + '/oauth/token'
-      response = RestClient.post endpoint, obtain_access_code_params(refresh_token), { Authorization: encoded_authorization_header }
+      response = RestClient.post endpoint,
+        obtain_access_code_params(refresh_token),
+        { Authorization: encoded_authorization_header, 'User-Agent' => APP_CONFIG['api']['user-agent'] }
       JSON.parse(response.body, {:symbolize_names => true})[:access_token]
     end
 
@@ -37,13 +39,16 @@ module Auth
 
     def exchange_code(code)
       endpoint = @api_config['auth_endpoint'] + '/oauth/token'
-      response = RestClient.post endpoint, exchange_code_params(code), { Authorization: encoded_authorization_header }
+      response = RestClient.post endpoint,
+        exchange_code_params(code),
+        { Authorization: encoded_authorization_header, 'User-Agent' => APP_CONFIG['api']['user-agent'] }
       JSON.parse(response.body, {:symbolize_names => true})
     end
 
     def verify_token(access_token)
       endpoint = @api_config['auth_endpoint'] + '/oauth/verify'
-      response = RestClient.get endpoint, { Authorization: authorization_header(access_token) }
+      response = RestClient.get endpoint,
+        { Authorization: authorization_header(access_token), 'User-Agent' => APP_CONFIG['api']['user-agent'] }
       JSON.parse(response.body, {:symbolize_names => true})
     end
 
