@@ -30,7 +30,6 @@ class EsiApiService
   end
 
   def authorization_header(auth = true)
-    auth ? { Authorization: "Bearer #{@access_token}" } : {}
+    auth ? { Authorization: "Bearer #{@access_token}", 'User-Agent' => APP_CONFIG['api']['user-agent'] } : {}
   end
 end
-
