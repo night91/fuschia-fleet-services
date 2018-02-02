@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include Auth::SessionsHelper
   include Pundit
 
-  before_action :load_current_user
+  before_action :touch_session
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referrer || root_path)
   end
 
-  def load_current_user
-    @current_user = current_user
+  def touch_session
+    current_user
   end
 end

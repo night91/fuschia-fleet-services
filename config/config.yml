@@ -1,4 +1,6 @@
 development:
+  session:
+    expiration_time: 3600
   security:
     corporation_id: 98540683
   api:
@@ -13,6 +15,8 @@ development:
     user-agent: 'Fuschia Fleet Services - Dev'
 
 production:
+  session:
+      expiration_time: 3600
   security:
     corporation_id: 98540683
   api:
@@ -26,6 +30,8 @@ production:
     user-agent: 'Fuschia Fleet Services'
 
 test:
+  session:
+    expiration_time: 3600
   security:
     corporation_id: 98540683
   api:
