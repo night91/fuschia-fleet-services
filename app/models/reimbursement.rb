@@ -15,11 +15,11 @@ class Reimbursement < ApplicationRecord
     state :rejected
 
     event :accept do
-      transitions from: [:pending], to: :accepted
+      transitions from: [:pending, :accepted,:rejected], to: :accepted
     end
 
     event :reject do
-      transitions from: [:pending], to: :rejected
+      transitions from: [:pending, :accepted,:rejected], to: :rejected
     end
   end
 end
