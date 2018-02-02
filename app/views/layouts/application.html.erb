@@ -20,6 +20,9 @@
       </div>
       <ul class="nav navbar-nav">
         <li><%= link_to "Home", root_path %></li>
+        <% if is_authenticated? %>
+          <li><%= link_to "Reimbursements", reimbursements_path %></li>
+        <% end %>
         <% if is_authenticated? && policy(RecruitingMailing).new? %>
           <li><%= link_to "Recruiting Mailing", recruit_mailing_add_path %></li>
         <% end %>
@@ -35,7 +38,7 @@
           </div>
           <div class="col-sm-4">
             <%= simple_form_for :logout, url: auth_logout_path do |f| %>
-              <%= f.button :submit, 'Logout', class: 'btn btn-info logout-btn' %>
+              <%= f.button :submit, 'Logout', class: 'btn btn-primary logout-btn' %>
             <% end %>
           </div>
         </div>

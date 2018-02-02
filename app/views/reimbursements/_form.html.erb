@@ -1,0 +1,10 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Request reimbursement</div>
+  <div class="panel-body">
+    <%= simple_form_for @reimbursement do |f| %>
+      <%= f.input :zkb_link, input_html: { type: 'url', autocomplete: 'off' }, required: true, placeholder: 'Zkillboard link', label: false %>
+
+      <%= f.button :submit, 'Request reimbursement', class: 'btn btn-success pull-right' %>
+    <% end %>
+  </div>
+</div>'

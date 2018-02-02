@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include AccountSetup
 
   has_many :roles, dependent: :destroy
+  has_many :reimbursements, dependent: :destroy
 
   validates :user_id, presence: true, uniqueness: true
   validates :name, presence: true

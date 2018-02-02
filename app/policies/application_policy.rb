@@ -50,4 +50,14 @@ class ApplicationPolicy
       scope
     end
   end
+
+  protected
+
+  def authorized?
+    true if user
+  end
+
+  def owner?
+    record.user == user
+  end
 end

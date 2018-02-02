@@ -14,4 +14,9 @@ Rails.application.routes.draw do
     post 'mailing/add', to: 'recruiting_mailing#create'
     get 'mailing/all', to: 'recruiting_mailing#index'
   end
+
+  resources :reimbursements do
+    post :accept
+    post :reject
+  end
 end

@@ -1,6 +1,10 @@
 module AccountSetup
   extend ActiveSupport::Concern
 
+  def admin?
+    self.has_role?(['CEO', 'Director'])
+  end
+
   def has_role!(role)
     return if has_role?(role)
     self.roles.create(name: role)

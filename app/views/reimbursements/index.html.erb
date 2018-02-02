@@ -1,0 +1,43 @@
+<div class="row">
+  <%= link_to 'Request Reimbursement', new_reimbursement_path, class: 'btn btn-sm btn-primary action-link' %>
+  <table class="table reimbursement_table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Link</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reimbursements.each_with_index do |reimbursement, index| %>
+        <tr>
+        <td width="5%">
+          <%= index + 1 %>
+        </td>
+        <td width="30%">
+          <img src="https://imageserver.eveonline.com/Character/<%= reimbursement.user.character_id %>_32.jpg" style="height: 32px; width: 32px;">
+          <%= reimbursement.user.name %>
+        </td>
+        <td width="50%">
+          <%= link_to reimbursement.zkb_link, reimbursement.zkb_link %>
+        </td>
+        <td width="20%">
+          <% unless policy(reimbursement).destroy? %>
+            <%= link_to reimbursement_path(reimbursement), method: :delete do %>
+              <span class="btn btn-danger">Delete</span>
+            <% end %>
+          <% else %>
+            <%= link_to reimbursement_accept_path(reimbursement), method: :post do %>
+              <span class="btn btn-success">Yes</span>
+            <% end %>
+            <%= link_to reimbursement_reject_path(reimbursement), method: :post do %>
+              <span class="btn btn-danger">No</span>
+            <% end %>
+          <% end %>
+        </td>
+        </tr>
+        <% end  %>
+    </tbody>
+  </table>
+</div>
