@@ -1,19 +1,13 @@
 class RecruitingMailingPolicy < ApplicationPolicy
   def new?
-    allowed_roles
+    authorized? && user.recruiting_staff?
   end
 
   def create?
-    allowed_roles
+    authorized? && user.recruiting_staff?
   end
 
   def index?
-    allowed_roles
-  end
-
-  private
-
-  def allowed_roles
-    user && user.has_role?(['CEO', 'Director', 'Recruiting Manager'])
+    authorized? && user.recruiting_staff?
   end
 end

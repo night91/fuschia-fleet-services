@@ -9,10 +9,12 @@ class ReimbursementService
   end
 
   def accept
+    @reimbursement.accept!
     send_mail('Accepted reimbursement')
   end
 
   def reject
+    @reimbursement.reject!
     send_mail('Rejected reimbursement')
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131182652) do
+ActiveRecord::Schema.define(version: 20180202174328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20180131182652) do
     t.string "zkb_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending", null: false
+    t.index ["status"], name: "index_reimbursements_on_status"
     t.index ["user_id"], name: "index_reimbursements_on_user_id"
   end
 

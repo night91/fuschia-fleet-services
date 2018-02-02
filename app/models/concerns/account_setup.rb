@@ -1,8 +1,16 @@
 module AccountSetup
   extend ActiveSupport::Concern
 
+  def super_admin?
+    self.has_role?('CEO')
+  end
+
   def admin?
     self.has_role?(['CEO', 'Director'])
+  end
+
+  def recruiting_staff?
+    self.has_role?(['CEO', 'Director', 'Recruiting Manager'])
   end
 
   def has_role!(role)

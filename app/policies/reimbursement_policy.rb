@@ -30,20 +30,10 @@ class ReimbursementPolicy < ApplicationPolicy
   end
 
   def accept?
-    allowed_roles
+    authorized? && user.admin?
   end
 
   def reject?
-    allowed_roles
-  end
-
-  private
-
-  def allowed_roles
-    user && user.has_role?(['CEO', 'Director'])
-  end
-
-  def reimbursement
-    record
+    authorized? && user.admin?
   end
 end

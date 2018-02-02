@@ -58,6 +58,6 @@ class ApplicationPolicy
   end
 
   def owner?
-    record.user == user
+    authorized? && record.user == user
   end
 end

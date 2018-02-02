@@ -24,16 +24,13 @@ class ReimbursementsController < ApplicationController
     end
   end
 
-  def show
-    @reimbursement = Reimbursement.find(params[:id])
-    authorize @reimbursement
-  end
-
   def destroy
     reimbursement = Reimbursement.find(params[:id])
     authorize reimbursement
 
-    delete_reimbursement(reimbursement, 'Reimbursement deleted')
+    reimbursement.delete
+    flash[:success] = 'Reimbursement deleted'
+    redirect_to reimbursements_path
   end
 
   def accept
@@ -42,7 +39,8 @@ class ReimbursementsController < ApplicationController
 
     ReimbursementService.new(reimbursement, current_user).accept
 
-    delete_reimbursement(reimbursement, 'Reimbursement accepted')
+    flash[:success] = 'Reimbursement accepted'
+    redirect_to reimbursements_path
   end
 
   def reject
@@ -51,18 +49,13 @@ class ReimbursementsController < ApplicationController
 
     ReimbursementService.new(reimbursement, current_user).reject
 
-    delete_reimbursement(reimbursement, 'Reimbursement rejected')
+    flash[:success] = 'Reimbursement rejected'
+    redirect_to reimbursements_path
   end
 
   private
 
   def reimbursement_params
     params.require(:reimbursement).permit(:zkb_link)
-  end
-
-  def delete_reimbursement(reimbursement, message)
-    reimbursement.delete
-    flash[:success] = message
-    redirect_to reimbursements_path
   end
 end
