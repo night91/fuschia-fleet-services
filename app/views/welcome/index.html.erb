@@ -1,6 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="welcome-container">
+      <% unless is_authenticated? %>
+        <div class="col-sm-12 text-center join-us-btn">
+          <%= simple_form_for :cpp_login, url: auth_cpplogin_path do |f| %>
+            <%= f.button :submit, 'Join us', class: 'btn btn-lg btn-info' %>
+          <% end %>
+        </div>
+      <% end %>
       <h2 class="col-sm-offset-2 col-sm-4">Welcome to Fuschia Fleet</h2>
       <p class="col-sm-4">
         Bear raiding, drinking vodka and squishing bees.

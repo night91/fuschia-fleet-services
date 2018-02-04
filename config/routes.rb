@@ -19,4 +19,8 @@ Rails.application.routes.draw do
     post :accept
     post :reject
   end
+
+  scope :user  do
+    get '/profile', to: 'user#profile'
+  end
 end

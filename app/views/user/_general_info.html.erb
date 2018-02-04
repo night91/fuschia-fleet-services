@@ -1,0 +1,24 @@
+<div id="user-general" class="user-general-container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="col-md-5">
+        <img width="200" height="200" src="https://imageserver.eveonline.com/Character/<%= @user.character_id %>_256.jpg">
+      </div>
+      <div class="col-md-7">
+        <h4><%= user.name %></h4>
+        <span><%= user_service.corporation_info[:name]%></span>
+        <span><%= user_service.alliance_info[:name]%></span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <h4>Clone</h4>
+      <span>Sec Status: <%= user_service.character_info[:security_status].round(1)%></span>
+      <span>Total SP: <%=  number_with_delimiter(user_service.character_skills[:total_sp], delimiter: ',') %></span>
+      <span>Wallet: <%=  number_with_delimiter(user_service.character_wallet.to_f.round(0), delimiter: ',') %> ISK</span>
+    </div>
+    <div class="col-md-3">
+      <h4>Account</h4>
+      <span>Birthday: <%= user_service.character_info[:birthday].to_date %> (<%= Date.today.mjd - user_service.character_info[:birthday].to_date.mjd %>) days </span>
+    </div>
+  </div>
+</div>

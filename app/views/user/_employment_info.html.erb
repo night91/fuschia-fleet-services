@@ -1,0 +1,31 @@
+<div id="user-employment" class="hidden">
+  <table class="table employment_table">
+    <thead class="thead-dark">
+    <tr>
+      <th width="5%" scope="col">#</th>
+      <th class="text-left" width="45%" scope="col">Corporation Name</th>
+      <th width="30%" scope="col">Ticker</th>
+      <th width="20%" scope="col">Start Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @user_service.character_corporation_history.each_with_index do |corporation, index| %>
+      <tr>
+        <td>
+          <%= index + 1 %>
+        </td>
+        <td class="text-left">
+          <img src="https://imageserver.eveonline.com/Corporation/<%= corporation[:corporation_id] %>_32.png" style="height: 32px; width: 32px;">
+          <%= corporation[:info][:name] %>
+        </td>
+        <td>
+          <%= corporation[:info][:ticker] %>
+        </td>
+        <td>
+          <%= corporation[:start_date].to_date %>
+        </td>
+      </tr>
+    <% end  %>
+    </tbody>
+  </table>
+</div>

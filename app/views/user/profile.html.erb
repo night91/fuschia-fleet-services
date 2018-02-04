@@ -1,0 +1,15 @@
+<div id="profile-nabvar" class="container navbar navbar-inverse navbar-fixed-left profile-nabvar">
+  <ul class="nav navbar-nav">
+    <li><a href="#user-general">General</a></li>
+    <li><a href="#user-finances">Finance</a></li>
+    <li><a href="#user-employment">Employment</a></li>
+    <li><a href="#user-contacts">Contacts</a></li>
+  </ul>
+</div>
+
+<div id="user-profile" class="user-profile-container container">
+  <%= render 'general_info', user: @user, user_service: @user_service %>
+  <%= render 'finances_info', user_service: @user_service %>
+  <%= render 'employment_info', user_service: @user_service %>
+  <%= render 'contacts_info', user_service: @user_service %>
+</div>

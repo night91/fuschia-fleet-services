@@ -13,6 +13,34 @@ class EsiApiService
     get("#{@endpoint}/characters/#{character_id}/roles/")
   end
 
+  def character_wallet(character_id)
+    get("#{@endpoint}/characters/#{character_id}/wallet/")
+  end
+
+  def character_wallet_journal(character_id)
+    get("#{@endpoint}/characters/#{character_id}/wallet/journal/")
+  end
+
+  def character_corporation_history(character_id)
+    get("#{@endpoint}/characters/#{character_id}/corporationhistory/")
+  end
+
+  def character_contacts(character_id)
+    get("#{@endpoint}/characters/#{character_id}/contacts/")
+  end
+
+  def character_skills(character_id)
+    get("#{@endpoint}/characters/#{character_id}/skills/")
+  end
+
+  def corporation(coorporation_id)
+    get("#{@endpoint}/corporations/#{coorporation_id}/", false)
+  end
+
+  def alliance(alliance_id)
+    get("#{@endpoint}/alliances/#{alliance_id}/", false)
+  end
+
   def send_simple_mail(character_id, destination_character_id, subject, body)
     params = {
       recipients: [

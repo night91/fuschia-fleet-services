@@ -4,6 +4,7 @@
 @import "recruiting_mailing";
 @import "welcome";
 @import "reimbursement";
+@import "user";
 
 body {
     background-image: url('<%= asset_path("bg_cyborg_blueish.jpg") %> ');
@@ -38,11 +39,22 @@ body {
   float: right;
   margin-top: 8px;
 
+  a:hover {
+    text-decoration: none;
+  }
+
   span.current-user-name {
     color: $white1;
     display: block;
-    margin-top: 8px;
+    margin-top: 4px;
     font-weight: bold;
+    text-align: center;
+    padding: 4px;
+
+    &:hover {
+      background-color: $dark2;
+      border-radius: 4px;
+    }
   }
 }
 
@@ -67,6 +79,8 @@ body {
   margin-top: 70px;
   border-top: 1px solid #e5e5e5;
   background-color: $dark1;
+  z-index: 10;
+  position: relative;
 }
 
 .footer p {
@@ -138,6 +152,14 @@ body {
 
 .label-lg {
   font-size: 20px;
+}
+
+.navbar-fixed-left {
+  width: 130px;
+  position: fixed;
+  border-radius: 0;
+  height: 100%;
+  left: 0px;
 }
 
 // Form Styles

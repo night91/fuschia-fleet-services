@@ -1,0 +1,55 @@
+// Place all the styles related to the User controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile-nabvar {
+  padding-left: 0px;
+  padding-right: 0px;
+
+  li {
+    width: 100%;
+
+    &:hover {
+      background-color: $dark2;
+    }
+  }
+}
+
+.user-profile-container {
+  background-color: $dark1;
+  padding: 20px;
+}
+
+.user-general-container {
+  h4 {
+    color: $white2;
+  }
+  span {
+    color: $white2;
+    display: block;
+  }
+}
+
+.employment_table {
+  thead {
+    color: $white1;
+    th {
+      text-align: center;
+
+      &.text-left {
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+    color: $white1;
+    tr {
+      text-align: center;
+
+      &.text-left {
+        text-align: left;
+      }
+    }
+  }
+}

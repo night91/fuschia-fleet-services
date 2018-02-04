@@ -22,9 +22,9 @@ module Auth
 
     def process_cpplogin_callback(params)
       exchange_response = exchange_code(params[:code])
-      verification_response = verify_token(exchange_response[:access_token])
+      character_id = verify_token(exchange_response[:access_token])
 
-      process_user_login(verification_response[:CharacterID], exchange_response[:refresh_token])
+      process_user_login(character_id, exchange_response[:refresh_token])
     end
 
     def obtain_access_code(refresh_token)
@@ -35,6 +35,13 @@ module Auth
       JSON.parse(response.body, {:symbolize_names => true})[:access_token]
     end
 
+    def verify_token(access_token)
+      endpoint = @api_config['auth_endpoint'] + '/oauth/verify'
+      response = RestClient.get endpoint,
+                                { Authorization: authorization_header(access_token), 'X-User-Agent' => APP_CONFIG['api']['user-agent'] }
+      JSON.parse(response.body, {:symbolize_names => true})[:CharacterID]
+    end
+
     private
 
     def exchange_code(code)
@@ -42,13 +49,6 @@ module Auth
       response = RestClient.post endpoint,
         exchange_code_params(code),
         { Authorization: encoded_authorization_header, 'X-User-Agent' => APP_CONFIG['api']['user-agent'] }
-      JSON.parse(response.body, {:symbolize_names => true})
-    end
-
-    def verify_token(access_token)
-      endpoint = @api_config['auth_endpoint'] + '/oauth/verify'
-      response = RestClient.get endpoint,
-        { Authorization: authorization_header(access_token), 'X-User-Agent' => APP_CONFIG['api']['user-agent'] }
       JSON.parse(response.body, {:symbolize_names => true})
     end
 
