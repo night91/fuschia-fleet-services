@@ -22,5 +22,6 @@ Rails.application.routes.draw do
 
   scope :user  do
     get '/profile', to: 'user#profile'
+    resources :mail
   end
 end

@@ -5,6 +5,7 @@
 @import "welcome";
 @import "reimbursement";
 @import "user";
+@import "mail";
 
 body {
     background-image: url('<%= asset_path("bg_cyborg_blueish.jpg") %> ');
@@ -33,6 +34,11 @@ body {
         background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url('<%= asset_path("ssologin.png") %> ');
         border-color: $dark2;
     }
+}
+
+.panel-container {
+  background-color: $dark1;
+  padding: 20px;
 }
 
 .user-menu-container {

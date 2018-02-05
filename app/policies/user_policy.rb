@@ -10,4 +10,8 @@ class UserPolicy < ApplicationPolicy
   def profile?
     authorized?
   end
+
+  def mail?
+    owner? || user.recruiting_staff?
+  end
 end

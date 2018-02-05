@@ -24,7 +24,7 @@ module AccountSetup
 
   def update_roles
     access_token = Auth::AuthenticationService.new.obtain_access_code(self[:token])
-    roles = EsiApiService.new(access_token).character_roles(self[:character_id])
+    roles = Api::EsiApiService.new(access_token).character_roles(self[:character_id])
 
     ActiveRecord::Base.transaction do
       self.roles.clear

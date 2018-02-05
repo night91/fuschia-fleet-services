@@ -1,8 +1,8 @@
 class UserService
   def initialize(refresh_token)
-    access_code = ::Auth::AuthenticationService.new.obtain_access_code(refresh_token)
-    @esi_api = ::EsiApiService.new(access_code)
-    @character_id = ::Auth::AuthenticationService.new.verify_token(access_code)
+    access_code = Auth::AuthenticationService.new.obtain_access_code(refresh_token)
+    @esi_api = Api::EsiApiService.new(access_code)
+    @character_id = Auth::AuthenticationService.new.verify_token(access_code)
     @character = @esi_api.character(@character_id)
   end
 
@@ -33,6 +33,15 @@ class UserService
   def character_contacts
     @character_contacts =  @esi_api.character_contacts(@character_id) unless @character_contacts
     @character_contacts
+  end
+
+  def character_mail(mail_id)
+    @esi_api.character_mail(@character_id, mail_id)
+  end
+
+  def character_mails_list
+    @mail_list = @esi_api.character_mail_list(@character_id) unless @mail_list
+    @mail_list
   end
 
   def character_skills
