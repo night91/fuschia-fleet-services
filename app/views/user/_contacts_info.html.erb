@@ -1,3 +1,26 @@
 <div id="user-contacts" class="hidden">
-  <%= @user_service.character_contacts.inspect %>
+  <table class="table fuschia_table">
+    <thead class="thead-dark">
+    <tr>
+      <th width="5%" scope="col">#</th>
+      <th width="15%" scope="col">Type</th>
+      <th width="25%" scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @user_service.character_contacts.each_with_index do |journal, index| %>
+      <tr>
+        <td>
+          <%= index + 1 %>
+        </td>
+        <td>
+          <%= journal[:contact_type].titleize %>
+        </td>
+        <td>
+          <%= journal[:info][:name].titleize %>
+        </td>
+      </tr>
+    <% end  %>
+    </tbody>
+  </table>
 </div>

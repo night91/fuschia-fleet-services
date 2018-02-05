@@ -29,27 +29,3 @@
     display: block;
   }
 }
-
-.employment_table {
-  thead {
-    color: $white1;
-    th {
-      text-align: center;
-
-      &.text-left {
-        text-align: left;
-      }
-    }
-  }
-
-  tbody {
-    color: $white1;
-    tr {
-      text-align: center;
-
-      &.text-left {
-        text-align: left;
-      }
-    }
-  }
-}

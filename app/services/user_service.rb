@@ -31,7 +31,16 @@ class UserService
   end
 
   def character_contacts
-    @character_contacts =  @esi_api.character_contacts(@character_id) unless @character_contacts
+    unless @character_contacts
+      @character_contacts =  @esi_api.character_contacts(@character_id)
+      @character_contacts.each do |contact|
+        unless contact[:contact_type] == 'faction'
+          contact[:info] = @esi_api.send(contact[:contact_type], contact[:contact_id])
+        else
+          contact[:info] = { name: contact[:corporation_id]}
+        end
+      end
+    end
     @character_contacts
   end
 

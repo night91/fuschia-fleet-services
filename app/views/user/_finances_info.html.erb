@@ -1,3 +1,35 @@
 <div id="user-finances" class="hidden">
-  <%= @user_service.character_wallet_journal.inspect %>
+  <table class="table fuschia_table">
+    <thead class="thead-dark">
+    <tr>
+      <th width="5%" scope="col">#</th>
+      <th width="15%" scope="col">Date</th>
+      <th width="25%" scope="col">Amount</th>
+      <th width="25%" scope="col">Type</th>
+      <th width="15%" scope="col">Amount</th>
+      <th width="15%" scope="col">Balance</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @user_service.character_wallet_journal.each_with_index do |journal, index| %>
+      <tr>
+        <td>
+          <%= index + 1 %>
+        </td>
+        <td>
+          <%= journal[:date] %>
+        </td>
+        <td>
+          <%= journal[:ref_type].titleize %>
+        </td>
+        <td>
+          <%= number_with_delimiter(journal[:amount], delimiter: ',') %>
+        </td>
+        <td>
+          <%= number_with_delimiter(journal[:balance], delimiter: ',') %>
+        </td>
+      </tr>
+    <% end  %>
+    </tbody>
+  </table>
 </div>
