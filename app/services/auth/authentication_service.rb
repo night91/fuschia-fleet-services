@@ -3,8 +3,6 @@ require 'rest-client'
 
 module Auth
   class AuthenticationService
-    attr_reader :refresh_token
-
     def initialize
       @api_config = APP_CONFIG['api']
     end
@@ -24,8 +22,6 @@ module Auth
 
     def process_cpplogin_callback(params)
       exchange_response = exchange_code(params[:code])
-      @refresh_token = exchange_response[:refresh_token]
-
       character_id = verify_token(exchange_response[:access_token])
 
       process_user_login(character_id, exchange_response[:refresh_token])
@@ -63,7 +59,7 @@ module Auth
 
     def character_info(character_id, token)
       character = ::Api::EsiApiService.new(token).character(character_id)
-      fail Exceptions::InvalidCorporationLoginError unless check_character_corporation(character)
+      fail Exceptions::InvalidCorporationLoginError.new(character_id, character[:name], token) unless check_character_corporation(character)
       character
     end
 

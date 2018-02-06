@@ -1,4 +1,4 @@
-class UserPolicy < ApplicationPolicy
+class UserPolicy < PunditPolicy
   def index?
     authorized? && user.admin?
   end
@@ -9,6 +9,10 @@ class UserPolicy < ApplicationPolicy
 
   def profile?
     authorized?
+  end
+
+  def application?
+    !authorized?
   end
 
   def mail?

@@ -1,4 +1,4 @@
-class RecruitingMailingPolicy < ApplicationPolicy
+class RecruitingMailingPolicy < PunditPolicy
   def new?
     authorized? && user.recruiting_staff?
   end

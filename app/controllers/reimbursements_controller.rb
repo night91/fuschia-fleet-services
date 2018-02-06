@@ -34,20 +34,20 @@ class ReimbursementsController < ApplicationController
   end
 
   def accept
-    reimbursement = Reimbursement.find(params[:reimbursement_id])
-    authorize reimbursement
+    reimbursement_service = ReimbursementService.new(params[:reimbursement_id])
+    authorize reimbursement_service.reimbursement
 
-    ReimbursementService.new(reimbursement, current_user).accept
+    reimbursement_service.accept!
 
     flash[:success] = 'Reimbursement accepted'
     redirect_to reimbursements_path
   end
 
   def reject
-    reimbursement = Reimbursement.find(params[:reimbursement_id])
-    authorize reimbursement
+    reimbursement_service = ReimbursementService.new(params[:reimbursement_id])
+    authorize reimbursement_service.reimbursement
 
-    ReimbursementService.new(reimbursement, current_user).reject
+    reimbursement_service.reject!
 
     flash[:success] = 'Reimbursement rejected'
     redirect_to reimbursements_path

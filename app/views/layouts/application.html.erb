@@ -27,6 +27,9 @@
         <% if is_authenticated? && policy(RecruitingMailing).new? %>
           <li><%= link_to "Recruiting Mailing", recruit_mailing_add_path %></li>
         <% end %>
+        <% if is_authenticated? && policy(Application).index? %>
+          <li><%= link_to "Applications", application_index_path %></li>
+        <% end %>
       </ul>
       <% unless is_authenticated? %>
         <%= simple_form_for :cpp_login, url: auth_cpplogin_path do |f| %>

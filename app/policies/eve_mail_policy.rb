@@ -1,4 +1,4 @@
-class EveMailPolicy < ApplicationPolicy
+class EveMailPolicy < PunditPolicy
   def show?
     authorized?
   end

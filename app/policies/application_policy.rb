@@ -1,63 +1,17 @@
-class ApplicationPolicy
-  attr_reader :user, :record
-
-  def initialize(user, record)
-    @user = user
-    @record = record
-  end
-
+class ApplicationPolicy < PunditPolicy
   def index?
-    false
+    authorized? && user.recruiting_staff?
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    authorized? && user.recruiting_staff?
   end
 
-  def create?
-    false
+  def accept?
+    authorized? && user.recruiting_staff?
   end
 
-  def new?
-    create?
-  end
-
-  def update?
-    false
-  end
-
-  def edit?
-    update?
-  end
-
-  def destroy?
-    false
-  end
-
-  def scope
-    Pundit.policy_scope!(user, record.class)
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope
-    end
-  end
-
-  protected
-
-  def authorized?
-    true if user
-  end
-
-  def owner?
-    authorized? && record.user == user
+  def reject?
+    authorized? && user.recruiting_staff?
   end
 end

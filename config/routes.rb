@@ -22,6 +22,12 @@ Rails.application.routes.draw do
 
   scope :user  do
     get '/profile', to: 'user#profile'
+    get '/welcome_application', to: 'user#application'
     resources :mail
+  end
+
+  resources :applications, as: :application do
+    post :accept
+    post :reject
   end
 end

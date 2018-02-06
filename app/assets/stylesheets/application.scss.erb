@@ -6,6 +6,7 @@
 @import "reimbursement";
 @import "user";
 @import "mail";
+@import "applications";
 
 body {
     background-image: url('<%= asset_path("bg_cyborg_blueish.jpg") %> ');
@@ -125,6 +126,10 @@ body {
     color: $white1;
     th {
       text-align: center;
+
+      &.text-left {
+        text-align: left;
+      }
     }
   }
 
@@ -132,6 +137,10 @@ body {
     color: $white1;
     tr {
       text-align: center;
+
+      &.text-left {
+        text-align: left;
+      }
     }
   }
 }

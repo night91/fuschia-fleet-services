@@ -1,0 +1,37 @@
+<div class="row">
+  <table class="table fuschia_table">
+    <thead class="thead-dark">
+    <tr>
+      <th width="5%" scope="col">#</th>
+      <th width="10%" scope="col">Date</th>
+      <th width="65%" scope="col">Name</th>
+      <th width="20%" scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @applications.each_with_index do |application, index| %>
+      <tr>
+        <td>
+          <%= index + 1 %>
+        </td>
+        <td>
+          <%= application.created_at.to_date %>
+        </td>
+        <td>
+          <img src="https://imageserver.eveonline.com/Character/<%= application.character_id %>_32.jpg" style="height: 32px; width: 32px;">
+          <%= application.name %>
+        </td>
+        <td>
+          <%= link_to 'View', application_path(application), class: 'btn btn-primary' %>
+          <%= link_to application_accept_path(application), method: :post do %>
+            <span class="btn btn-success">Yes</span>
+          <% end %>
+          <%= link_to application_reject_path(application), method: :post do %>
+            <span class="btn btn-danger">No</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end  %>
+    </tbody>
+  </table>
+</div>

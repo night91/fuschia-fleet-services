@@ -1,4 +1,4 @@
-class ReimbursementPolicy < ApplicationPolicy
+class ReimbursementPolicy < PunditPolicy
   class Scope < Scope
     def resolve
       if user.admin?

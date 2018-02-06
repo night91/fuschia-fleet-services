@@ -5,4 +5,8 @@ class UserController < ApplicationController
     @user = current_user
     @user_service = UserService.new(@user.token)
   end
+
+  def application
+    authorize User
+  end
 end
