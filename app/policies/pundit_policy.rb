@@ -1,4 +1,4 @@
-class ApplicationPolicy
+class PunditPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
