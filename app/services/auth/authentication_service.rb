@@ -3,6 +3,8 @@ require 'rest-client'
 
 module Auth
   class AuthenticationService
+    attr_reader :refresh_token
+
     def initialize
       @api_config = APP_CONFIG['api']
     end
@@ -22,6 +24,8 @@ module Auth
 
     def process_cpplogin_callback(params)
       exchange_response = exchange_code(params[:code])
+      @refresh_token = exchange_response[:refresh_token]
+
       character_id = verify_token(exchange_response[:access_token])
 
       process_user_login(character_id, exchange_response[:refresh_token])

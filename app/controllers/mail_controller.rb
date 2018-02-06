@@ -1,6 +1,6 @@
 class MailController < ApplicationController
   def show
-    authorize Mail
+    authorize EveMail
 
     @mail = UserService.new(current_user.token).character_mail(params[:id])
   end
