@@ -8,6 +8,10 @@ module Api
       get("#{@endpoint}/characters/#{character_id}/roles/")
     end
 
+    def character_titles(character_id)
+      get("#{@endpoint}/characters/#{character_id}/titles/")
+    end
+
     def character_corporation_history(character_id)
       get("#{@endpoint}/characters/#{character_id}/corporationhistory/")
     end
