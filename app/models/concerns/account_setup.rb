@@ -10,7 +10,7 @@ module AccountSetup
   end
 
   def recruiting_staff?
-    self.has_role?(['CEO', 'Director', 'Recruiting Manager'])
+    self.has_role?(['CEO', 'Director', 'Membership Director'])
   end
 
   def has_role!(role)
