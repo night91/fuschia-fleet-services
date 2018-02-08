@@ -18,12 +18,15 @@ module Api
     def get(endpoint, auth = true)
       response = RestClient.get endpoint, authorization_header(auth)
       process_response(response)
+    rescue RestClient::ExceptionWithResponse => e
+      nil
     end
 
     def post(endpoint, params, auth = true)
       response = RestClient.post endpoint, params.to_json, authorization_header(auth)
-      puts response.inspect
       process_response(response)
+    rescue RestClient::ExceptionWithResponse => e
+      nil
     end
 
     private
