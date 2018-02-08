@@ -20,11 +20,13 @@ Rails.application.routes.draw do
     post :reject
   end
 
-  scope :user  do
-    get '/profile', to: 'user#profile'
-    get '/welcome_application', to: 'user#application'
+  scope :users  do
+    get '/profile', to: 'users#profile'
+    get '/welcome_application', to: 'users#application'
     resources :mail
   end
+
+  resources :users
 
   resources :applications, as: :application do
     post :accept

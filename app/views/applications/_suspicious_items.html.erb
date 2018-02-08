@@ -1,0 +1,30 @@
+<div id="user-suspicious-items" class="hidden">
+  <% if user_service.character_suspicious_items.empty? %>
+    <h3> No suspicious items detected</h3>
+  <% else %>
+    <table class="table fuschia_table">
+      <thead class="thead-dark">
+      <tr>
+        <th width="5%" scope="col">#</th>
+        <th class="text-left" width="75%" scope="col">Name</th>
+        <th width="20%" scope="col">Quantity</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% user_service.character_suspicious_items.each_with_index do |asset, index| %>
+          <tr>
+            <td>
+              <%= index + 1 %>
+            </td>
+            <td class="text-left">
+              <%= asset[:name] %>
+            </td>
+            <td class="text-left">
+              <%= asset[:quantity] %>
+            </td>
+          </tr>
+        <% end  %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

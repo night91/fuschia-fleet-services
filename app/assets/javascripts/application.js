@@ -13,5 +13,5 @@
 //= require jquery
 //= require rails-ujs
 //= require bootstrap
-//= require user
+//= require users
 //= require_tree .

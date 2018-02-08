@@ -30,6 +30,9 @@
         <% if is_authenticated? && policy(Application).index? %>
           <li><%= link_to "Applications", application_index_path %></li>
         <% end %>
+        <% if is_authenticated? && policy(User).index? %>
+          <li><%= link_to "Users", users_path %></li>
+        <% end %>
       </ul>
       <% unless is_authenticated? %>
         <%= simple_form_for :cpp_login, url: auth_cpplogin_path do |f| %>

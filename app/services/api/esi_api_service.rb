@@ -7,6 +7,7 @@ module Api
     include SkillsApi
     include CorporationApi
     include ContactsApi
+    include AssetsApi
 
     def initialize(access_token)
       @endpoint = APP_CONFIG['api']['endpoint']

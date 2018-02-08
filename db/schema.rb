@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206163327) do
+ActiveRecord::Schema.define(version: 20180207224244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "application", force: :cascade do |t|
+  create_table "applications", force: :cascade do |t|
     t.string "character_id"
     t.string "status"
     t.string "token"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20180206163327) do
     t.string "name"
     t.index ["status"], name: "index_applications_on_status"
     t.index ["token"], name: "index_applications_on_token"
+  end
+
+  create_table "assets", primary_key: "asset_id", id: :integer, default: nil, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recruiting_mailings", force: :cascade do |t|

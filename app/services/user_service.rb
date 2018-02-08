@@ -58,6 +58,33 @@ class UserService
     @skills
   end
 
+  def character_suspicious_items
+    unless  @suspicious_items
+      items = Asset.all
+      page = 0
+      s_items = []
+
+      loop do
+        assets = @esi_api.character_assets(@character_id, page)
+        break if assets.empty?
+
+        items.each do |item|
+          assets.each do |asset|
+            if item[:asset_id] == asset[:type_id]
+              s_items << { item: item, quantity: asset[:quantity] }
+            end
+          end
+        end
+
+        page += 1
+      end
+
+      @suspicious_items = count_array_duplicates(s_items)
+    end
+
+    @suspicious_items
+  end
+
   def corporation_info
     @corporation = @esi_api.corporation(@character[:corporation_id]) unless @corporation
     @corporation
@@ -66,5 +93,15 @@ class UserService
   def alliance_info
     @alliance = @esi_api.alliance(@character[:alliance_id]) unless @alliance
     @alliance
+  end
+
+  private
+
+  def count_array_duplicates(array)
+    result = []
+    hash= Hash.new(0)
+    array.each { |v| hash[v[:item][:name]] += v[:quantity] }
+    hash.each {|k, v| result << { name: k, quantity: v } }
+    result
   end
 end

@@ -5,15 +5,13 @@
     <li><a href="#user-employment">Employment</a></li>
     <li><a href="#user-contacts">Contacts</a></li>
     <li><a href="#user-mails">Mails</a></li>
-    <li><a href="#user-suspicious-items">Suspicious Items</a></li>
   </ul>
 </div>
 
 <div id="user-profile" class="user-profile-container panel-container container">
-  <%= render '/users/general_info', user: @user, user_service: @user_service %>
-  <%= render '/users/finances_info', user_service: @user_service %>
-  <%= render '/users/employment_info', user_service: @user_service %>
-  <%= render '/users/contacts_info', user_service: @user_service %>
-  <%= render '/users/mails_info', user_service: @user_service %>
-  <%= render 'suspicious_items', user_service: @user_service %>
+  <%= render 'general_info', user: @user, user_service: @user_service %>
+  <%= render 'finances_info', user_service: @user_service %>
+  <%= render 'employment_info', user_service: @user_service %>
+  <%= render 'contacts_info', user_service: @user_service %>
+  <%= render 'mails_info', user_service: @user_service %>
 </div>
