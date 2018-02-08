@@ -10,7 +10,7 @@ module AccountSetup
   end
 
   def recruiting_staff?
-    self.has_role?(['CEO', 'Director', 'Membership Director'])
+    self.has_role?(['CEO', 'Director', 'Membership Director', 'Personnel_Manager'])
   end
 
   def has_role!(role)
@@ -30,7 +30,7 @@ module AccountSetup
     ActiveRecord::Base.transaction do
       self.roles.clear
       roles[:roles].each { |role| self.has_role!(role) }
-      titles.each { |title| self.has_role!(title[:name]) }
+      titles.each { |title| self.has_role!(ActionView::Base.full_sanitizer.sanitize(title[:name])) }
     end
   end
 
