@@ -18,11 +18,11 @@
           <%= mail[:timestamp].to_date %>
         </td>
         <td class="text-left">
-          <img src="https://imageserver.eveonline.com/Character/<%= mail[:from] %>_32.jpg" style="height: 32px; width: 32px;">
+          <img width="32" height="32" src="<%= portrait_url(:character, mail[:from], 32) %>">
           <%= mail[:subject] %>
         </td>
         <td class="text-left">
-          <%= link_to 'View', mail_path(mail[:mail_id]), class: 'btn btn-primary' %>
+          <%= link_to 'View', mail_path(mail[:mail_id]), class: 'btn btn-primary', target: :_blank %>
         </td>
       </tr>
     <% end  %>

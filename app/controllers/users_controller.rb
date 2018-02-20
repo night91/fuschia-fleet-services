@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user_service = UserService.new(@user.token)
   end
 
-  def application
+  def welcome_application
     authorize User
   end
 end

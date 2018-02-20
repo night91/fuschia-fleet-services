@@ -1,8 +1,8 @@
 <div class="container panel-container">
   <div class="row">
     <div class="col-sm-12 mail-subject">
+      <img width="32" height="32" src="<%= portrait_url(:character, @mail[:from], 32) %>">
       <span>Subject: <%= @mail[:subject] %></span>
-      <%= link_to 'Back', profile_path, class: 'btn btn-sm btn-primary action-link pull-right' %>
     </div>
   </div>
   <div class="row">

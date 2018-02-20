@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   namespace :recruit do
     get 'mailing/add', to: 'recruiting_mailing#new'
     post 'mailing/add', to: 'recruiting_mailing#create'
-    get 'mailing/all', to: 'recruiting_mailing#index'
   end
 
   resources :reimbursements do
@@ -20,13 +19,14 @@ Rails.application.routes.draw do
     post :reject
   end
 
-  scope :users  do
-    get '/profile', to: 'users#profile'
-    get '/welcome_application', to: 'users#application'
-    resources :mail
-  end
+  resources :users do
+    collection do
+      get 'profile'
+      get 'welcome_application'
 
-  resources :users
+      resources :mails
+    end
+  end
 
   resources :applications, as: :application do
     post :accept

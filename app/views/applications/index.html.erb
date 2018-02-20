@@ -18,7 +18,7 @@
           <%= application.created_at.to_date %>
         </td>
         <td>
-          <img src="https://imageserver.eveonline.com/Character/<%= application.character_id %>_32.jpg" style="height: 32px; width: 32px;">
+          <img width="32" height="32" src="<%= portrait_url(:character, application.character_id, 32) %>">
           <%= application.name %>
         </td>
         <td>

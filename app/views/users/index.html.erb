@@ -14,7 +14,7 @@
           <%= index + 1 %>
         </td>
         <td class="text-left" >
-          <img src="https://imageserver.eveonline.com/Character/<%= user.character_id %>_32.jpg" style="height: 32px; width: 32px;">
+          <img width="32" height="32" src="<%= portrait_url(:character, user.character_id, 32) %>">
           <%= user.name %>
         </td>
         <td>

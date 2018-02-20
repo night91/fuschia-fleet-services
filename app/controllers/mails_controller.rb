@@ -1,4 +1,4 @@
-class MailController < ApplicationController
+class MailsController < ApplicationController
   def show
     authorize EveMail
 

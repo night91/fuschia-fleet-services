@@ -2,12 +2,18 @@
   <div class="row">
     <div class="col-md-6">
       <div class="col-md-5">
-        <img width="200" height="200" src="https://imageserver.eveonline.com/Character/<%= user.character_id %>_256.jpg">
+        <img width="200" height="200" src="<%= portrait_url(:character, user.character_id, 200) %>">
       </div>
       <div class="col-md-7">
         <h4><%= user.name %></h4>
-        <span><%= user_service.corporation_info[:name]%></span>
-        <span><%= user_service.alliance_info[:name]%></span>
+        <span>
+          <img width="16" height="16" src="<%= portrait_url(:corporation, user.corporation_id, 32) %>">
+          <%= user_service.corporation_info[:name]%>
+        </span>
+        <span>
+          <img width="16" height="16" src="<%= portrait_url(:alliance, user.alliance_id, 32) %>">
+          <%= user_service.alliance_info[:name]%>
+        </span>
       </div>
     </div>
     <div class="col-md-3">

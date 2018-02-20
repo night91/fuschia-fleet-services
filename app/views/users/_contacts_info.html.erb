@@ -2,22 +2,23 @@
   <table class="table fuschia_table">
     <thead class="thead-dark">
     <tr>
-      <th width="5%" scope="col">#</th>
-      <th width="15%" scope="col">Type</th>
-      <th width="25%" scope="col">Name</th>
+      <th width="20%" scope="col">#</th>
+      <th width="40%" scope="col">Name</th>
+      <th width="40%" scope="col">Type</th>
     </tr>
     </thead>
     <tbody>
-    <% user_service.character_contacts.each_with_index do |journal, index| %>
+    <% user_service.character_contacts.each_with_index do |contact, index| %>
       <tr>
         <td>
           <%= index + 1 %>
         </td>
-        <td>
-          <%= journal[:contact_type].titleize %>
+        <td class="text-left">
+          <img width="32" height="32" src="<%= portrait_url(contact[:contact_type], contact[:contact_id], 32) %>">
+          <%= contact[:info][:name].titleize %>
         </td>
         <td>
-          <%= journal[:info][:name].titleize %>
+          <%= contact[:contact_type].titleize %>
         </td>
       </tr>
     <% end  %>

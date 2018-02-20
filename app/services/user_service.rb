@@ -1,4 +1,8 @@
+require 'action_view'
+
 class UserService
+  include ActionView::Helpers::DateHelper
+
   def initialize(refresh_token)
     access_code = Auth::AuthenticationService.new.obtain_access_code(refresh_token)
     @esi_api = Api::EsiApiService.new(access_code)
@@ -23,8 +27,12 @@ class UserService
   def character_corporation_history
     unless @corporation_history
       @corporation_history = @esi_api.character_corporation_history(@character_id)
-      @corporation_history.each do |corporation|
+      @corporation_history.each_with_index do |corporation, index|
         corporation[:info] = @esi_api.corporation(corporation[:corporation_id])
+
+        end_date = (index == 0) ? Time.now : Time.parse(@corporation_history[index - 1][:start_date])
+
+        corporation[:total_days] = distance_of_time_in_words(Time.parse(corporation[:start_date]), end_date)
       end
     end
     @corporation_history
