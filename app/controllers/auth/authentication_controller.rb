@@ -21,7 +21,7 @@ module Auth
       redirect_to root_path
     rescue ::Exceptions::InvalidCorporationLoginError => e
       Application.create(character_id: e.character_id, name: e.character_name, token: e.token, status: 'pending')
-      redirect_to welcome_application_path
+      redirect_to welcome_application_users_path
     end
 
     private
