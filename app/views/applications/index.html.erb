@@ -4,8 +4,8 @@
     <tr>
       <th width="5%" scope="col">#</th>
       <th width="10%" scope="col">Date</th>
-      <th width="65%" scope="col">Name</th>
-      <th width="20%" scope="col">Action</th>
+      <th width="55%" scope="col">Name</th>
+      <th width="30%" scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -24,10 +24,10 @@
         <td>
           <%= link_to 'View', application_path(application), class: 'btn btn-primary' %>
           <%= link_to application_accept_path(application), method: :post do %>
-            <span class="btn btn-success">Yes</span>
+            <span class="btn btn-success">Accept</span>
           <% end %>
           <%= link_to application_reject_path(application), method: :post do %>
-            <span class="btn btn-danger">No</span>
+            <span class="btn btn-danger">Reject</span>
           <% end %>
         </td>
       </tr>
