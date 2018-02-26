@@ -11,7 +11,7 @@ class UserPolicy < PunditPolicy
     authorized?
   end
 
-  def application?
+  def welcome_application?
     !authorized?
   end
 
