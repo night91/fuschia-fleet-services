@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207224244) do
+ActiveRecord::Schema.define(version: 20180226224244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20180207224244) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "corporation_id"
+    t.string "alliance_id"
     t.index ["status"], name: "index_applications_on_status"
     t.index ["token"], name: "index_applications_on_token"
   end

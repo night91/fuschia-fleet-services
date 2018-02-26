@@ -1,10 +1,10 @@
 class ApplicationPolicy < PunditPolicy
   def index?
-    authorized? && user.recruiting_staff?
+    authorized?
   end
 
   def show?
-    authorized? && user.recruiting_staff?
+    authorized?
   end
 
   def accept?

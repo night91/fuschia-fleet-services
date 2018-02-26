@@ -59,7 +59,11 @@ module Auth
 
     def character_info(character_id, token)
       character = ::Api::EsiApiService.new(token).character(character_id)
-      fail Exceptions::InvalidCorporationLoginError.new(character_id, character[:name], token) unless check_character_corporation(character)
+      fail Exceptions::InvalidCorporationLoginError.new(character_id,
+                                                        character[:name],
+                                                        character[:corporation_id],
+                                                        character[:alliance_id],
+                                                        token) unless check_character_corporation(character)
       character
     end
 

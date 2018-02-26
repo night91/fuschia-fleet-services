@@ -20,7 +20,14 @@ module Auth
       create_session(user[:user_id])
       redirect_to root_path
     rescue ::Exceptions::InvalidCorporationLoginError => e
-      Application.create(character_id: e.character_id, name: e.character_name, token: e.token, status: 'pending')
+      Application.create(
+        character_id: e.character_id,
+        name: e.character_name,
+        corporation_id: e.corporation_id,
+        alliance_id: e.alliance_id,
+        token: e.token,
+        status: 'pending'
+      )
       redirect_to welcome_application_users_path
     end
 
