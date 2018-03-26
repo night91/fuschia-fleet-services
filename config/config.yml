@@ -2,7 +2,7 @@ development:
   session:
     expiration_time: 3600
   security:
-    corporation_id: 98540683
+    corporation_id: 98362674
   api:
     endpoint: "https://esi.tech.ccp.is/latest"
     auth_endpoint: "https://login.eveonline.com"
@@ -18,7 +18,7 @@ production:
   session:
       expiration_time: 3600
   security:
-    corporation_id: 98540683
+    corporation_id: 98551035
   api:
     endpoint: "https://esi.tech.ccp.is/latest"
     auth_endpoint: "https://login.eveonline.com"
@@ -33,7 +33,7 @@ test:
   session:
     expiration_time: 3600
   security:
-    corporation_id: 98540683
+    corporation_id: 98362674
   api:
     endpoint: "https://esi.tech.ccp.is/latest"
     auth_endpoint: "https://login.eveonline.com"
